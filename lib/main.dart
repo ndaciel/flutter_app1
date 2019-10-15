@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(AppBarPage());
+void main() => runApp(CardParsing());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -16,6 +16,67 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class CardParsing extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Card n Parsing',
+      theme: ThemeData(
+        primarySwatch: Colors.yellow,
+      ),
+      routes: <String,WidgetBuilder>{
+        '/HelloWorldPage' :(BuildContext context) => HelloWorldPage(),
+        '/MyApp' :(BuildContext context) => MyApp()
+      },
+      home : Scaffold(
+        appBar : AppBar(
+          title: Text("Card n Parsing Page"),
+        ),
+        body : Container(
+          child : Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              ViewCardSaya(lIcon: Icons.bluetooth,lText: "Nandha",lColor: Colors.lime,),
+              ViewCardSaya(lIcon: Icons.android,lText: "Dwi",lColor: Colors.red,),
+              ViewCardSaya(lIcon: Icons.home,lText: "Subekti",lColor: Colors.green,),
+            ],
+          ),
+
+        ),
+      ),
+    );
+  }
+
+}
+
+class ViewCardSaya extends StatelessWidget{
+  ViewCardSaya({this.lIcon,this.lText,this.lColor});
+  final IconData lIcon;
+  final String lText;
+  final Color lColor;
+  @override
+  Widget build(BuildContext context){
+    return Container(
+          padding: EdgeInsets.all(10.0),
+          child: Card(
+              child: InkWell(
+                  onTap: () => Navigator.of(context).pushNamed('/HelloWorldPage'),
+                  child:
+                  Row(
+                    children: <Widget>[
+                      Icon(lIcon,size: 50.0,color:lColor,),
+                      Text(lText)
+                    ],
+                  )
+              ),
+
+
+          ),
+    );
+  }
+
+}
+
 class HelloWorldPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -24,13 +85,23 @@ class HelloWorldPage extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.yellow,
       ),
-      //home: MyHomePage(title: 'Home Page'),
       home : Scaffold(
         appBar : AppBar(
           title: Text("Hello World Page"),
         ),
         body : Center(
-          child : Text("Hello Master Nandha, Its me your apps"),
+          child :
+          Row(
+            children: <Widget>[
+              Text("Hello Master Nandha, Its me your apps"),
+              RaisedButton(
+                child: Text("klik disini"),
+                onPressed: () => Navigator.of(context).pushNamed('/MyApp')
+              )
+            ],
+          )
+          ,
+
 
         ),
       ),
@@ -92,8 +163,29 @@ class AppBarPage extends StatelessWidget {
           title: Center( child : Text("App Bar Page")),
           actions: <Widget>[Icon(Icons.search)],
         ),
-        body : Center(
-          child : Text("Hello Master Nandha, Its me your apps"),
+        body : Container(
+          child : Column(
+            children: <Widget>[
+              Icon(Icons.android,
+                size:70.0,
+                color: Colors.red),
+
+              Row(children: <Widget>[
+                Icon(Icons.airplay,
+                    size:70.0,
+                    color: Colors.red),
+                Icon(Icons.airplay,
+                    size:70.0,
+                    color: Colors.red),
+                Icon(Icons.airplay,
+                    size:70.0,
+                    color: Colors.red),
+              ],),
+              Icon(Icons.pregnant_woman,
+                  size:70.0,
+                  color: Colors.red)
+            ],
+          ),
 
         ),
       ),
