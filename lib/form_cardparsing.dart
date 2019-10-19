@@ -15,9 +15,6 @@ class CardParsing extends StatelessWidget {
 //        '/MyApp' :(BuildContext context) => MyApp()
 //      },
       home : Scaffold(
-        appBar : AppBar(
-          title: Text("Card n Parsing Page"),
-        ),
         body : Container(
           child : Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -25,6 +22,7 @@ class CardParsing extends StatelessWidget {
               ViewCardSaya(lIcon: Icons.bluetooth,lText: "Nandha",lColor: Colors.lime,),
               ViewCardSaya(lIcon: Icons.android,lText: "Dwi",lColor: Colors.red,),
               ViewCardSaya(lIcon: Icons.home,lText: "Subekti",lColor: Colors.green,),
+              Image.asset('img/fl-1.jpg', width: 200.0, height: 100.0,)
             ],
           ),
 

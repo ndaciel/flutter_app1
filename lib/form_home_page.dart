@@ -7,10 +7,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'The Simple Flutter',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
       home: MyHomePage(title: 'Home Page'),
     );
   }
@@ -42,13 +38,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image.asset('img/fl-2.jpg',height: 100.0,),
             Text(
               'You have pushed the button this many times:',
             ),

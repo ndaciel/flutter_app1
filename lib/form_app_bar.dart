@@ -14,11 +14,7 @@ class AppBarPage extends StatelessWidget {
       //home: MyHomePage(title: 'Home Page'),
       home : Scaffold(
         backgroundColor: Colors.limeAccent,
-        appBar : AppBar(
-          leading: Icon(Icons.home),
-          title: Center( child : Text("App Bar Page")),
-          actions: <Widget>[Icon(Icons.search)],
-        ),
+
         body : Container(
           child : Column(
             children: <Widget>[
@@ -39,7 +35,8 @@ class AppBarPage extends StatelessWidget {
               ],),
               Icon(Icons.pregnant_woman,
                   size:70.0,
-                  color: Colors.red)
+                  color: Colors.red),
+              Image(image: NetworkImage('https://www.freepngimg.com/thumb/anime/6-2-anime-high-quality-png.png'),height: 200.0,)
             ],
           ),
 
