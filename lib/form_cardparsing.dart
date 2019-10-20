@@ -44,7 +44,8 @@ class ViewCardSaya extends StatelessWidget{
       padding: EdgeInsets.all(10.0),
       child: Card(
         child: InkWell(
-            onTap: () => Navigator.of(context).pushNamed('/HelloWorldPage'),
+            //onTap: () => Navigator.of(context).pushNamed('/HelloWorldPage'),
+            onTap: () => _ackAlert(context,lText),
             child:
             Row(
               children: <Widget>[
@@ -59,4 +60,25 @@ class ViewCardSaya extends StatelessWidget{
     );
   }
 
+}
+
+Future<void> _ackAlert(BuildContext context, String ldata) {
+  return showDialog<void>(
+    context: context,
+    builder: (BuildContext context) {
+      String data = ldata;
+      return AlertDialog(
+        title: Text(data),
+        content: Text('perkenalkan nama saya ${data}'),
+        actions: <Widget>[
+          FlatButton(
+            child: Text('Ok'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
 }

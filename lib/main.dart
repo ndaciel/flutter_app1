@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'form_cardparsing.dart' as cardparsing;
 import 'form_home_page.dart' as homepage;
 //import 'form_app_bar.dart' as appbar;
-import 'form_list_view.dart' as list_view;
+//import 'form_list_view.dart' as list_view;
+import 'form_list_view_json.dart' as list_view_json;
 
 
 void main() => runApp(MaterialApp(
@@ -90,7 +91,8 @@ class _TabBarPageState extends State<TabBarPage> with SingleTickerProviderStateM
             cardparsing.CardParsing(),
             homepage.MyApp(),
 //            appbar.AppBarPage(),
-            list_view.ListViewPage(),
+//            list_view.ListViewPage(),
+            list_view_json.ListViewPage(),
           ]),
 
       bottomNavigationBar: Material(
