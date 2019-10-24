@@ -23,7 +23,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -35,29 +34,109 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  String text = "";
+  TextEditingController controller = TextEditingController();
+  TextEditingController controller2 = TextEditingController();
+  TextEditingController controller3 = TextEditingController();
+
+  final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
+
+  void _alertDialog(String str){
+    if (str == "") return;
+    AlertDialog alertDialog = AlertDialog(
+      content: Text(str,style: TextStyle(fontSize: 20.0)),
+      actions: <Widget>[
+        RaisedButton(
+          child: Text("alert btn", style: TextStyle(color: Colors.black),),
+          onPressed: (){
+            Navigator.of(context).pop();
+          },
+        )
+      ],
+    );
+
+    showDialog(context: context,child: alertDialog);
+
+  }
+
+  void _snackbar(String str){
+    if (str == "") return;
+    _scaffoldState.currentState.showSnackBar(new SnackBar(
+        content: Text(str, style: TextStyle(fontSize: 20.0),),
+      duration: Duration(seconds: 3),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset('img/fl-2.jpg',height: 100.0,),
-            Text(
-              'You have pushed the button this many times:',
+      key: _scaffoldState,
+      body: Column(
+        children: [
+          Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                TextField(
+                  controller : controller,
+                  decoration:
+                      new InputDecoration(hintText: "Tulis sesuatu disini"),
+                  onSubmitted: (String str) {
+                    setState(() {
+                      text = str + "\n" + text;
+                      controller.text = "";
+                    });
+                  },
+                ),
+
+                Text(
+                  text,
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                TextField(
+                  controller : controller2,
+                  decoration:
+                  new InputDecoration(hintText: "Tulis sesuatu disini"),
+                  onSubmitted: (String str) {
+                    _alertDialog(str);
+                  },
+                ),
+                TextField(
+                  controller : controller3,
+                  decoration:
+                  new InputDecoration(hintText: "Tulis sesuatu disini"),
+                  onSubmitted: (String str) {
+                    _snackbar(str);
+                  },
+                ),
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+          ),
+          Center(
+            child: Column(
+              //mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image.asset(
+                  'img/fl-2.jpg',
+                  height: 100.0,
+                ),
+                Text(
+                  'You have pushed the button this many times:',
+                ),
+                Text(
+                  '$_counter',
+                  style: Theme.of(context).textTheme.display1,
+                ),
+              ],
             ),
-          ],
-        ),
+          )
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+//      floatingActionButton: FloatingActionButton(
+//        onPressed: _incrementCounter,
+//        tooltip: 'Increment',
+//        child: Icon(Icons.add),
+//      ),
     );
   }
 }

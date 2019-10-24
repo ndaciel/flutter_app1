@@ -22,7 +22,8 @@ class CardParsing extends StatelessWidget {
               ViewCardSaya(lIcon: Icons.bluetooth,lText: "Nandha",lColor: Colors.lime,),
               ViewCardSaya(lIcon: Icons.android,lText: "Dwi",lColor: Colors.red,),
               ViewCardSaya(lIcon: Icons.home,lText: "Subekti",lColor: Colors.green,),
-              Image.asset('img/fl-1.jpg', width: 200.0, height: 100.0,)
+              Image.asset('img/fl-1.jpg', width: 200.0, height: 100.0,),
+
             ],
           ),
 
@@ -50,7 +51,8 @@ class ViewCardSaya extends StatelessWidget{
             Row(
               children: <Widget>[
                 Icon(lIcon,size: 50.0,color:lColor,),
-                Text(lText)
+                Text(lText),
+
               ],
             )
         ),

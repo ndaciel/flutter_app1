@@ -81,6 +81,7 @@ class _TabBarPageState extends State<TabBarPage> with SingleTickerProviderStateM
             Tab(icon: Icon(Icons.computer),text: 'card parsing',),
             Tab(icon: Icon(Icons.headset),text : 'home page'),
             Tab(icon: Icon(Icons.radio), text : 'app bar'),
+
           ],
         ),
       ),
