@@ -57,6 +57,16 @@ class TabBarPage extends StatefulWidget {
 class _TabBarPageState extends State<TabBarPage> with SingleTickerProviderStateMixin{
   TabController  controller;
 
+  String gambar1="https://lh3.googleusercontent.com/a-/AAuE7mDGBvE57Rygy-27-mDf9j0nGWs--MfmOvxWifbbzQ=s640-rw-il";
+  String gambar2;
+  String tempUser;
+
+  void GantiUser(){
+    this.setState((){
+
+    });
+  }
+
   @override
   void initState() {
     controller = new TabController(vsync: this,length: 3);
@@ -81,6 +91,36 @@ class _TabBarPageState extends State<TabBarPage> with SingleTickerProviderStateM
             Tab(icon: Icon(Icons.computer),text: 'card parsing',),
             Tab(icon: Icon(Icons.headset),text : 'home page'),
             Tab(icon: Icon(Icons.radio), text : 'app bar'),
+
+          ],
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            UserAccountsDrawerHeader(accountName: Text("nandha",style: TextStyle(color: Colors.amber)),
+              accountEmail: Text("nandadwisubekti@gmail.com",style: TextStyle(color: Colors.amber)),
+              decoration: BoxDecoration(
+                image : DecorationImage(
+                    image: NetworkImage("https://www.thomsonreuters.com/content/dam/ewp-m/images/image-library/en/photography/201138-118072186.jpeg.transform/hero-s/q90/image.jpg"),
+                  fit: BoxFit.cover
+                ),
+              ),
+              currentAccountPicture:
+                  CircleAvatar(
+                      backgroundImage : NetworkImage(gambar1),
+                  ),
+              otherAccountsPictures: <Widget>[
+                GestureDetector(
+                    onTap: () => GantiUser(),
+                    child: CircleAvatar(
+                        backgroundImage : NetworkImage("https://pasberita.com/wp-content/uploads/2018/04/Hajime-no-Ippo.jpg"),
+                    )
+                ),
+              ],
+            ),
+            ListTile(title: Text("Home"),trailing: Icon(Icons.home),),
+            ListTile(title: Text("setting"),trailing: Icon(Icons.settings_applications),),
 
           ],
         ),
